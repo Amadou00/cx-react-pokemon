@@ -1,0 +1,23 @@
+{
+  "name": "cx-react-pokemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amadou00/cx-react-pokemon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amadou00/cx-react-pokemon/issues"
+  },
+  "homepage": "https://github.com/Amadou00/cx-react-pokemon#readme"
+}
