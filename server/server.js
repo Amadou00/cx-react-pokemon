@@ -14,10 +14,11 @@ app.get('/pokemon',(req,res) =>{
   })
 })
 
+
 app.get('/pokemon/:id',(req,res) =>{
-  db.select(req.params.id).from('pokemons').orderBy('id').then(function(data){
-      res.send(data)
-  })
+  db.from('pokemons').where({ id: req.params.id }).then(function (data){
+      res.send(data[0].infos.nom)
+  });
 })
 
 app.listen(port, () => {
