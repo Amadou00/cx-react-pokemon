@@ -1,9 +1,7 @@
 const knex = require('knex')
-const tables = require('../src/javascript/tables.js')
-let pokemon = tables.pokeTable
-let attaques = tables.attaqueTable
+const pokemons = require('./src/pokedex.json');
 
-const data = knex({
+const pg = knex({
   client: 'pg',
   connection: {
     host : 'localhost',
@@ -14,16 +12,19 @@ const data = knex({
   searchPath: ['knex', 'public'],
 });
 
-data.schema.createTable('pokemon', function (tablePok) {
-  tablePok.increments();
-  pokemon.forEach(attribut => {
-    tablePok.string(attribut);
-  });
-}).then(console.log)
+pg.schema.createTableIfNotExists("pokemons", function (table) {
+  table.increments(); // id automatique
+  table.string('numero')
+  table.jsonb('infos')
+}).then(async  () => {
+      const pokemonsToInsert = pokemons.map(pokemon => {
+         return {
+           numero: pokemon.numero,
+           infos: JSON.stringify(pokemon)
+         }
+      })
+      await pg("pokemons").insert(pokemonsToInsert);
+  }
+)
 
-data.schema.createTable('attaques', function (tableAtt) {
-  tableAtt.increments();
-  attaques.forEach(attribut => {
-    tableAtt.string(attribut);
-  });
-}).then(console.log)
+module.exports = pg
