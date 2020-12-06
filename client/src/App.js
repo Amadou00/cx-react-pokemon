@@ -1,12 +1,13 @@
 import React from 'react' 
 import logo from './logo.svg'
 import './App.css'
-import Body from './Body'
+import Body from './component/Body'
+import ParamsExample from './component/Test'
 
 const App = () => {
     return (
       <div>
-        <Body />
+        <ParamsExample/>
       </div>
     );
 }
