@@ -12,19 +12,23 @@ const pg = knex({
   searchPath: ['knex', 'public'],
 });
 
-pg.schema.createTableIfNotExists("pokemons", function (table) {
-  table.increments(); // id automatique
-  table.string('numero')
-  table.jsonb('infos')
-}).then(async  () => {
-      const pokemonsToInsert = pokemons.map(pokemon => {
+pg.schema.hasTable('pokemons').then(function(exists) {
+  if (!exists) {
+    return pg.schema.createTable('pokemons', function(table) {
+      table.increments(); // integer id
+      table.string('numero')
+      table.jsonb('infos')
+    }).then(async  () => {
+      const pokemonsToInsert = pokemons.map(pokemons => {
          return {
-           numero: pokemon.numero,
-           infos: JSON.stringify(pokemon)
+           numero: pokemons.numero,
+           infos: JSON.stringify(pokemons)
          }
       })
       await pg("pokemons").insert(pokemonsToInsert);
   }
 )
 
-module.exports = pg
+  }
+});
+module.exports = pg;

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "pg": "^8.5.1"
@@ -12,7 +13,7 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "start": "node ./client/public/index.html",
+    "sta": "node ./client/public/index.html",
     "dev": "nodemon ./server/server.js",
     "seed": "node ./server/seed.js",
     "gitadd": "git add .\\server .\\src\\"
