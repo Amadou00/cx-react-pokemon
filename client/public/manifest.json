@@ -3,17 +3,17 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/Users/adlaneould/Desktop/Efrei/Node/CodeFlix/onecode/cx-react-pokemon/client/public/a40352d7d454ef7af8dde97a9e04fced58e1c6881da3b2278427dd1b.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/Users/adlaneould/Desktop/Efrei/Node/CodeFlix/onecode/cx-react-pokemon/client/public/a40352d7d454ef7af8dde97a9e04fced58e1c6881da3b2278427dd1b.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "/Users/adlaneould/Desktop/Efrei/Node/CodeFlix/onecode/cx-react-pokemon/client/public/a40352d7d454ef7af8dde97a9e04fced58e1c6881da3b2278427dd1b.png",
       "type": "image/png",
       "sizes": "512x512"
     }

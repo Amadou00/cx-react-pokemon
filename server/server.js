@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 	3000
+const port = 	8000
 const db = require ("./seed.js")
 //console.log(test);
 
@@ -9,9 +9,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/pokemon',(req,res) =>{
-  db.select().from('pokemons').orderBy('id').then(function(data){
-      res.send(data)
-  })
+  // db.select().from('pokemons').orderBy('id').then(function(data){
+  //     res.send(data)
+  // })
+  res.send('Hello test')
 })
 
 
