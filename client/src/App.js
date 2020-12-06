@@ -1,7 +1,7 @@
 import React from 'react' 
 import logo from './logo.svg'
 import './App.css'
-import Body from './Body'
+import Body from './component/Body'
 
 const App = () => {
     return (
