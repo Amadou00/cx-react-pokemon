@@ -1,6 +1,7 @@
 import React from 'react' 
 import ReactDOM from 'react-dom'
 import '../pokemon.css'
+import PokeById from './PokeById'
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,12 +9,13 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+const queryString = require('query-string');
 
 class Pokemons extends React.Component {
     constructor(props){
       super(props)
       this.state = {
-        pokemon: null,
+        pokemons: null,
         pokemons_length: null,
         loading: true
       }
@@ -24,10 +26,8 @@ class Pokemons extends React.Component {
       .then(res => res.json())
       .then(data =>{
         this.setState({pokemons_length: data.length})
-        this.setState({pokemon: data})
+        this.setState({pokemons: data})
         this.setState({loading: false})
-
-        console.log(this.state.pokemon)
       })
     await fetch('https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png')
     .then(res => res.blob())
@@ -35,32 +35,24 @@ class Pokemons extends React.Component {
       this.setState({pokemons_img: data})
     })
     }
-
-    createPokeView(id, numero, nom){
-    return (<div>
-      id: {id} - numero:{numero} - nom: {nom}
-    </div>)
-    }
   
     render(){
       const lst = []
-      let imgPoke;
       if (this.state.loading == false){
         for (let i = 0; i < this.state.pokemons_length; i++){
 
-          let srcPoke = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.state.pokemon[i].numero}.png`
+          let srcPoke = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.state.pokemons[i].numero}.png`
           let pokemon =
           <div>
             <div className="w3-container w3-quarter fond_pokemon info_Poke">
               <div>
                 <img src={srcPoke}></img>
               </div>
-              n°{this.state.pokemon[i].numero} - Nom: {this.state.pokemon[i].infos.nom}
+              n°{this.state.pokemons[i].numero} - Nom: {this.state.pokemons[i].infos.nom}
             </div> 
           </div> 
           
           lst.push(pokemon)
-          console.log(this.state.pokemon[2].id)
         }
             return (
               <Router>
@@ -75,8 +67,8 @@ class Pokemons extends React.Component {
                     {lst}
                   </div>
                 </Route>
-                <Route exact path="/pokemon/:id">
-                    <div>En cours de développement</div>
+                <Route exact path="/pokemon/:id" children>
+                    <div>{      console.log(window.location.search)} En cours</div>
                 </Route>
               </Switch>
           </Router>
